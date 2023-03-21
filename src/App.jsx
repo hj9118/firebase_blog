@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
 import Login from './pages/Login';
 import Todo from './pages/Todo';
 import { PrivateRoute } from './routes/PrivateRoute';
@@ -6,7 +7,7 @@ import './style.scss';
 
 function App() {
   return (
-    <BrowserRouter>
+    <AuthProvider>
       <Routes>
         <Route path='/' element={<Login />} />
         <Route
@@ -18,7 +19,7 @@ function App() {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </AuthProvider>
   );
 }
 

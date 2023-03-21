@@ -21,6 +21,16 @@
       border-radius: 10px;
       cursor: pointer;
     }
+    button::before{
+      content: '';
+      background: url('./img/google.png');
+      display: inline-block;
+      background-size: contain;
+      width: 15px;
+      height: 15px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
   }
 }
 
@@ -73,13 +83,15 @@
         gap: 10px;
 
         input{
-          width: 80%;
+          width: 150px;
           padding: 10px;
           border: none;
           outline: none;
         }
         button{
-          width: 80%;
+          width: 100%;
+          border: none;
+          outline: none;
         }
       }
     }
