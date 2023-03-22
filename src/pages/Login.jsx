@@ -1,31 +1,26 @@
-import React, { useEffect } from 'react';
+import { auth, provider } from '../firebase';
+import { signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { UserAuth } from '../context/AuthContext';
 
-const Login = () => {
+const Login = ({ setIsAuth }) => {
   const navigate = useNavigate();
-  const { currentUser, signinWithGoogle } = UserAuth();
-  console.log(currentUser);
 
-  const handleLogin = async () => {
-    try {
-      await signinWithGoogle();
-    } catch (error) {
-      console.log(error);
-    }
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem('isAuth', true);
+      setIsAuth(true);
+      navigate('/');
+    });
   };
-
-  useEffect(() => {
-    if (currentUser) {
-      navigate('/todo');
-    }
-  }, [currentUser]);
-
   return (
-    <div className='login'>
-      <div className='wrapper'>
-        <h1>NoName Project</h1>
-        <button onClick={handleLogin}>Login with Google</button>
+    <div className='container'>
+      <div className='card mt-5 text-center'>
+        <div className='card-body'>
+          <p className='display-6 mt-3'>Sign in with Google</p>
+          <button className='btn btn-dark' onClick={signInWithGoogle}>
+            Google
+          </button>
+        </div>
       </div>
     </div>
   );
