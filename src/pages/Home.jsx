@@ -38,9 +38,10 @@ const Home = ({ isAuth }) => {
             <div key={post.id} className='card mb-4 shadow shadow-sm'>
               <div className='card-body'>
                 {isAuth && post.author.id === auth.currentUser.uid && (
-                  <div className='d-flex justify-content-end'>
+                  <div className='d-flex justify-content-between align-items-center'>
+                    <h5 className='card-title mb-3 fw-bold'>{post.title}</h5>
                     <button
-                      className='btn btn-danger my-3 mx-3'
+                      className='btn btn-danger my-2 mx-2'
                       onClick={() => {
                         deletePost(post.id);
                       }}
@@ -49,7 +50,6 @@ const Home = ({ isAuth }) => {
                     </button>
                   </div>
                 )}
-                <h5 className='card-title mb-3 fw-bold'>{post.title}</h5>
                 <p className='card-title mb-3'>{post.post}</p>
                 <span className='badge bg-dark'>{post.author.name}</span>
               </div>
