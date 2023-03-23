@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,6 +22,7 @@ const Write = ({ isAuth }) => {
           author: {
             name: auth.currentUser.displayName,
             id: auth.currentUser.uid,
+            avatar: auth.currentUser.photoURL,
           },
         });
         console.log(auth);

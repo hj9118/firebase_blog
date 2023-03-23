@@ -34,7 +34,7 @@ function App() {
               <Link to='/write' className='nav-link text-white mx-2'>
                 Write
               </Link>
-              <button className='btn btn-primary' onClick={userLogout}>
+              <button className='btn btn-light' onClick={userLogout}>
                 Logout
               </button>
             </>
